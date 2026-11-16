@@ -20,7 +20,7 @@
   Chart.defaults.font.family = fonte;
   Chart.defaults.color = tinta;
 
-  new Chart(canvas, {
+  const grafico = new Chart(canvas, {
     type: "bar",
     data: {
       labels: rotulos,
@@ -58,4 +58,22 @@
       },
     },
   });
+
+  // ----- Dados reais do back end (se ainda não houver denúncias, mantém o exemplo) -----
+  fetch("/api/estatisticas")
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((d) => {
+      if (!d.total || !d.por_tipo.length) return;
+      grafico.data.labels = d.por_tipo.map((t) => t.nome);
+      grafico.data.datasets[0].data = d.por_tipo.map((t) => t.total);
+      grafico.data.datasets[0].label = "Denúncias";
+      grafico.options.scales.y.max = undefined;
+      grafico.update();
+      document.getElementById("chart-title").textContent = "Denúncias por tipo de violência";
+      canvas.setAttribute(
+        "aria-label",
+        "Gráfico de barras: " + d.por_tipo.map((t) => `${t.nome}: ${t.total}`).join("; ")
+      );
+    })
+    .catch(() => { /* sem back end: mantém o gráfico de exemplo */ });
 })();

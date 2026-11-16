@@ -267,6 +267,37 @@ select.control-pill {
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--lilac-soft); }
 .btn-ghost:hover { background: rgba(167, 139, 192, .2); }
 
+.erro {
+  margin-top: 1.2rem;
+  font-weight: 600;
+  color: #7a1f3d;
+}
+
+.erro[hidden] { display: none; }
+
+.protocolo-label { margin-top: .8rem; font-weight: 400; }
+
+.protocolo {
+  margin: .3rem 0 .9rem;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: .05em;
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+
+.consulta {
+  max-width: 40rem;
+  margin-top: 3.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--lilac-soft);
+}
+
+.consulta h2 { font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+.consulta-form { display: flex; gap: .8rem; flex-wrap: wrap; }
+.consulta-form .control { flex: 1 1 16rem; }
+.resultado { margin-top: .8rem; font-weight: 600; color: var(--ink); }
+
 .confirmacao {
   margin-top: 1.4rem;
   padding: 1rem 1.4rem;

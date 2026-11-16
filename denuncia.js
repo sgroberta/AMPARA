@@ -107,21 +107,67 @@
     });
   });
 
-  function enviar() {
-    const dados = new FormData(form);
+  const erro = document.getElementById("erro");
+  const protocoloEl = document.getElementById("protocolo");
+  const btnCopiar = document.getElementById("btn-copiar");
 
-    /* TODO: enviar ao back end, por exemplo:
-       fetch("/api/denuncias", { method: "POST", body: dados })
-         .then(...)
-       Não envie IP, cookies de identificação nem dados pessoais:
-       a denúncia deve permanecer anônima. */
-    console.log("Denúncia pronta para envio:", Object.fromEntries(dados));
-
+  async function enviar() {
+    erro.hidden = true;
     btnContinuar.disabled = true;
-    btnVoltar.hidden = true;
-    confirmacao.hidden = false;
-    confirmacao.focus?.();
+
+    try {
+      // multipart/form-data: campos de texto + arquivos (campo "arquivos")
+      const resp = await fetch("/api/denuncias", { method: "POST", body: new FormData(form) });
+      const json = await resp.json().catch(() => ({}));
+      if (!resp.ok) throw new Error(json.erro || "Não foi possível enviar a denúncia.");
+
+      protocoloEl.textContent = json.protocolo;
+      btnVoltar.hidden = true;
+      btnContinuar.hidden = true;
+      confirmacao.hidden = false;
+      confirmacao.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (e) {
+      erro.textContent = e.message;
+      erro.hidden = false;
+      btnContinuar.disabled = false;
+    }
   }
+
+  btnCopiar.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(protocoloEl.textContent);
+      btnCopiar.textContent = "Copiado!";
+    } catch {
+      btnCopiar.textContent = "Selecione e copie manualmente";
+    }
+  });
+
+  // ---------- Acompanhar denúncia pelo protocolo
+  const consulta = document.getElementById("form-consulta");
+  const resultado = document.getElementById("resultado-consulta");
+  const ROTULOS = {
+    recebida: "Recebida",
+    em_analise: "Em análise",
+    encaminhada: "Encaminhada aos órgãos responsáveis",
+    concluida: "Concluída",
+  };
+
+  consulta.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const chave = document.getElementById("chave").value.trim();
+    resultado.textContent = "Consultando...";
+    try {
+      const resp = await fetch("/api/denuncias/" + encodeURIComponent(chave));
+      const json = await resp.json().catch(() => ({}));
+      if (!resp.ok) throw new Error(json.erro || "Não foi possível consultar.");
+      const d = (iso) => iso.split("-").reverse().join("/");
+      resultado.textContent =
+        `Status: ${ROTULOS[json.status] || json.status}. ` +
+        `Recebida em ${d(json.recebida_em)} · atualizada em ${d(json.atualizada_em)}.`;
+    } catch (err) {
+      resultado.textContent = err.message;
+    }
+  });
 
   // Enter em campos de texto não deve enviar nem pular etapa sem querer
   form.addEventListener("submit", (e) => e.preventDefault());

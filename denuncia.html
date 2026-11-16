@@ -154,10 +154,25 @@
         </button>
       </div>
 
-      <p class="confirmacao" id="confirmacao" role="status" hidden>
-        Denúncia enviada. Obrigada por contribuir para mudar essa realidade.
-      </p>
+      <p class="erro" id="erro" role="alert" hidden></p>
+
+      <div class="confirmacao" id="confirmacao" role="status" hidden>
+        <p>Denúncia enviada. Obrigada por contribuir para mudar essa realidade.</p>
+        <p class="protocolo-label">Seu protocolo (guarde-o; ele não pode ser recuperado):</p>
+        <p class="protocolo" id="protocolo"></p>
+        <button type="button" class="btn btn-ghost" id="btn-copiar">Copiar protocolo</button>
+      </div>
     </form>
+
+    <section class="consulta" aria-labelledby="consulta-titulo">
+      <h2 id="consulta-titulo">Acompanhar uma denúncia</h2>
+      <form id="form-consulta" class="consulta-form">
+        <label class="sr-only" for="chave">Protocolo</label>
+        <input id="chave" type="text" class="control control-pill" placeholder="AMPA-XXXX-XXXX-XXXX-XXXX" autocomplete="off" required>
+        <button type="submit" class="btn btn-primary">Consultar</button>
+      </form>
+      <p id="resultado-consulta" class="resultado" role="status"></p>
+    </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
