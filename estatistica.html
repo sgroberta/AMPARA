@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ampara – Violência obstétrica no Brasil</title>
+  <meta name="description" content="Dados e estatísticas sobre violência obstétrica no Brasil.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="estatistica.css">
+</head>
+<body>
+
+  <!-- ========== CABEÇALHO ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Ampara – página inicial">
+        <svg class="logo-icon" viewBox="0 0 64 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 6c-7 8-9 18-4 28 3 5 6 8 4 14-2-6 1-9 4-14 5-10 3-20-4-28Z" fill="currentColor" fill-opacity=".35"/>
+          <path d="M30 40C20 38 10 30 8 18c8 0 16 4 20 12"/>
+          <path d="M34 40c10-2 20-10 22-22-8 0-16 4-20 12"/>
+          <path d="M26 46C14 48 4 42 2 34c8-2 16 0 22 6"/>
+          <path d="M38 46c12 2 22-4 24-12-8-2-16 0-22 6"/>
+          <path d="M26 50c4 2 8 3 12 0"/>
+        </svg>
+        <span class="logo-text">AMPARA</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Página inicial</a></li>
+          <li><a href="informativo.html">Informativo</a></li>
+          <li><a href="estatistica.html" aria-current="page">Estatística</a></li>
+          <li><a href="denuncia.html">Denúncia</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== CONTEÚDO ========== -->
+  <main class="stats-page">
+
+    <h1>Violência Obstétrica no Brasil</h1>
+
+    <div class="divider divider-center" aria-hidden="true">
+      <span></span>
+      <svg viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 6c-7 8-9 18-4 28 3 5 6 8 4 14-2-6 1-9 4-14 5-10 3-20-4-28Z" fill="currentColor" fill-opacity=".3"/>
+        <path d="M30 40C20 38 10 30 8 18c8 0 16 4 20 12"/>
+        <path d="M34 40c10-2 20-10 22-22-8 0-16 4-20 12"/>
+        <path d="M26 46C14 48 4 42 2 34c8-2 16 0 22 6"/>
+        <path d="M38 46c12 2 22-4 24-12-8-2-16 0-22 6"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <div class="stats-grid">
+
+      <!-- Gráfico (dados de exemplo – troque pelos dados reais) -->
+      <figure class="chart card" aria-labelledby="chart-title">
+        <figcaption id="chart-title">Exemplo de gráfico</figcaption>
+
+        <div class="chart-canvas">
+          <canvas id="grafico" role="img" aria-label="Gráfico de barras de exemplo com seis valores">
+            Gráfico de barras de exemplo: Item 1: 60, Item 2: 89, Item 3: 71, Item 4: 89, Item 5: 61, Item 6: 100.
+          </canvas>
+        </div>
+      </figure>
+
+      <!-- Destaques numéricos -->
+      <ul class="highlights">
+        <li><strong>80%</strong> DADO EXEMPLO DADO</li>
+        <li><strong>65%</strong> DADO EXEMPLO</li>
+        <li class="highlight-last">CERCA DE <strong>56%</strong> dado exemplo exemplo</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <span class="sr-only">Ampara – informação e apoio contra a violência obstétrica</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="estatistica.js"></script>
+</body>
+</html>

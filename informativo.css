@@ -1,0 +1,88 @@
+/* ==========================================================
+   AMPARA – página Informativo (complementa style.css)
+   ========================================================== */
+
+.info-page {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.info-page h1 {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.divider-center {
+  max-width: 20rem;
+  margin: .4rem auto 2rem;
+}
+
+.info-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 68rem;
+}
+
+.info-text strong { font-weight: 700; color: var(--ink); }
+
+/* ---------- Atalhos ---------- */
+.topics {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 5.5rem;
+}
+
+.topics-lotus {
+  flex: none;
+  width: 4.4rem;
+  height: auto;
+  color: var(--lilac);
+}
+
+.pill {
+  display: inline-block;
+  padding: .85rem 1.6rem;
+  border: 1px solid var(--lilac-soft);
+  border-radius: 999px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  text-align: center;
+  transition: background-color .2s, transform .2s;
+}
+
+.pill:hover { background: rgba(167, 139, 192, .22); }
+.pill:active { transform: translateY(1px); }
+
+/* ---------- Seções de apoio ---------- */
+.topic {
+  max-width: 68rem;
+  margin-top: 4rem;
+  scroll-margin-top: 8rem; /* compensa o cabeçalho fixo */
+}
+
+.topic h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .5rem;
+}
+
+.topic p { font-size: 1.1rem; line-height: 1.7; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .topics { margin-top: 3rem; flex-direction: column; }
+  .topics-lotus { order: -1; }
+  .pill { font-size: 1.15rem; }
+}

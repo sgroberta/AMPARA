@@ -1,0 +1,324 @@
+/* ==========================================================
+   AMPARA – página inicial
+   ========================================================== */
+
+:root {
+  --bg:          #e2d1d9;   /* fundo rosado */
+  --lilac:       #a78bc0;   /* barras e logo */
+  --lilac-soft:  #8f77c4;   /* bordas dos cards */
+  --purple:      #6f5788;   /* botão */
+  --ink:         #2f2340;   /* texto escuro */
+  --ink-soft:    #3b3048;
+  --white:       #ffffff;
+
+  --radius-card: 36px;
+  --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+h1, h2, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Cabeçalho ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 14px solid var(--lilac);
+  box-shadow: 0 4px 6px rgba(47, 35, 64, .18);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .75rem 1.5rem .6rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--lilac);
+}
+
+.logo-icon { width: 4.2rem; height: auto; }
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 3.2rem;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: .35rem 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  color: var(--ink);
+  border-bottom: 3px solid transparent;
+  transition: border-color .2s;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] { border-bottom-color: var(--lilac); }
+
+/* ---------- Layout principal ---------- */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 3rem;
+  align-items: start;
+}
+
+.col { display: flex; flex-direction: column; }
+
+/* ---------- Introdução ---------- */
+.intro h1 {
+  font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 14em;
+  padding-left: .3rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  max-width: 24rem;
+  margin: .9rem 0 1.4rem 1.8rem;
+  color: var(--lilac);
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--lilac);
+}
+
+.divider svg { width: 2.2rem; height: auto; }
+
+.intro p {
+  max-width: 31rem;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.intro p + p { margin-top: 2.4rem; }
+
+.intro strong { font-weight: 600; color: var(--ink); }
+
+/* ---------- Cards ---------- */
+.card {
+  border: 1px solid var(--lilac-soft);
+  border-radius: var(--radius-card);
+  background: transparent;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.4rem 1.7rem;
+  max-width: 31rem;
+  transition: background-color .2s, transform .2s;
+}
+
+.card-link:hover { background: rgba(167, 139, 192, .15); }
+.card-link:active { transform: translateY(1px); }
+
+.card-link .icon {
+  flex: none;
+  width: 3rem;
+  height: auto;
+  color: var(--ink);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--ink);
+}
+
+.card-title strong { font-weight: 600; }
+
+.card-title-light { font-size: 1.3rem; }
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.card-text strong { font-weight: 600; }
+
+/* Posições “escalonadas” como no layout */
+.card-offset-1 { margin-top: 5rem; }
+.card-offset-2 { margin-top: 8rem; margin-left: .5rem; }
+.card-offset-3 { margin-top: 4rem; margin-left: -3rem; max-width: 31.5rem; padding-block: 2rem; }
+
+/* ---------- Seus direitos ---------- */
+.direitos h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: .6rem;
+}
+
+.card-direitos {
+  padding: 1rem 1.4rem 1.2rem 1.4rem;
+  border-radius: 40px;
+}
+
+.direitos-intro {
+  font-size: 1.05rem;
+  margin-bottom: .2rem;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin-bottom: .35rem;
+}
+
+.checklist li:not(.sem-icone)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2d1d9' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 70% no-repeat;
+}
+
+/* ---------- Aprenda a fundo ---------- */
+.aprenda { margin-top: 2.5rem; padding-left: 2rem; }
+
+.h2-small {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+
+.btn-informativo {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  min-width: 20rem;
+  padding: 1.3rem 1.7rem;
+  background: var(--purple);
+  color: var(--white);
+  border-radius: 14px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.3;
+  transition: background-color .2s, transform .2s;
+}
+
+.btn-informativo:hover { background: #5d4676; }
+.btn-informativo:active { transform: translateY(1px); }
+.btn-informativo .icon { flex: none; width: 3.4rem; height: auto; }
+
+/* ---------- Rodapé ---------- */
+.site-footer {
+  height: 66px;
+  background: linear-gradient(180deg, #a68cc0 0%, #9f86bb 100%);
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+  .page {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    padding-top: 2.5rem;
+  }
+
+  /* Em telas menores, “Seus direitos” vem logo depois da introdução */
+  .col-left { display: contents; }
+  .intro            { order: 1; }
+  .col-right        { order: 2; }
+  .card-offset-1    { order: 3; }
+  .card-offset-2    { order: 4; }
+
+  .card-offset-1,
+  .card-offset-2,
+  .card-offset-3 { margin: 0; max-width: none; }
+
+  .card-link { max-width: none; }
+  .aprenda { padding-left: 0; }
+  .header-inner { gap: 1rem; }
+  .main-nav ul { gap: .25rem 1.6rem; }
+}
+
+@media (max-width: 520px) {
+  .logo-text { font-size: 1.6rem; }
+  .logo-icon { width: 3.2rem; }
+  .main-nav a { font-size: .9rem; }
+  .btn-informativo { min-width: 0; width: 100%; font-size: 1.2rem; }
+  .card-title { font-size: 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

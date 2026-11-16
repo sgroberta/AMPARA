@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ampara – Formulário de denúncia</title>
+  <meta name="description" content="Denuncie de forma anônima casos de violência obstétrica. Todos os campos são opcionais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="denuncia.css">
+</head>
+<body>
+
+  <!-- ========== CABEÇALHO (igual ao da página inicial) ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Ampara – página inicial">
+        <svg class="logo-icon" viewBox="0 0 64 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 6c-7 8-9 18-4 28 3 5 6 8 4 14-2-6 1-9 4-14 5-10 3-20-4-28Z" fill="currentColor" fill-opacity=".35"/>
+          <path d="M30 40C20 38 10 30 8 18c8 0 16 4 20 12"/>
+          <path d="M34 40c10-2 20-10 22-22-8 0-16 4-20 12"/>
+          <path d="M26 46C14 48 4 42 2 34c8-2 16 0 22 6"/>
+          <path d="M38 46c12 2 22-4 24-12-8-2-16 0-22 6"/>
+          <path d="M26 50c4 2 8 3 12 0"/>
+        </svg>
+        <span class="logo-text">AMPARA</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Página inicial</a></li>
+          <li><a href="informativo.html">Informativo</a></li>
+          <li><a href="estatistica.html">Estatística</a></li>
+          <li><a href="denuncia.html" aria-current="page">Denúncia</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== CONTEÚDO ========== -->
+  <main class="form-page">
+
+    <h1>Formulário de Denúncia</h1>
+    <p class="form-sub">Sua identidade será preservada. Todos os campos são opcionais.</p>
+
+    <!-- Indicador de etapas -->
+    <ol class="stepper" aria-label="Etapas da denúncia">
+      <li class="step is-active" data-step="1" aria-current="step"><span class="step-dot">1</span><span class="step-label">Ocorrência</span></li>
+      <li class="step" data-step="2"><span class="step-dot">2</span><span class="step-label">Detalhes</span></li>
+      <li class="step" data-step="3"><span class="step-dot">3</span><span class="step-label">Evidências</span></li>
+      <li class="step" data-step="4"><span class="step-dot">4</span><span class="step-label">Revisão</span></li>
+    </ol>
+
+    <form id="form-denuncia" novalidate>
+
+      <!-- Etapa 1 – Ocorrência -->
+      <fieldset class="panel is-active" data-panel="1">
+        <legend class="sr-only">Etapa 1: Ocorrência</legend>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="descricao">Descreva o que aconteceu</label>
+            <textarea id="descricao" name="descricao" class="control control-area" placeholder="Conte com o máximo de detalhes.."></textarea>
+          </div>
+
+          <div class="stack">
+            <div class="field">
+              <label for="local">Local de ocorrência</label>
+              <input id="local" name="local" type="text" class="control control-pill" placeholder="Ex.: Hospital, Clínica, UBS...">
+            </div>
+
+            <div class="field">
+              <label for="data">Data da ocorrência</label>
+              <input id="data" name="data" type="date" class="control control-pill control-date" max="" aria-describedby="data-ajuda">
+              <span id="data-ajuda" class="sr-only">Formato dia, mês e ano</span>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Etapa 2 – Detalhes -->
+      <fieldset class="panel" data-panel="2">
+        <legend class="sr-only">Etapa 2: Detalhes</legend>
+
+        <div class="grid-2">
+          <div class="field">
+            <span class="label" id="tipos-label">O que você vivenciou? (marque quantas quiser)</span>
+            <div class="checks" role="group" aria-labelledby="tipos-label">
+              <label class="check"><input type="checkbox" name="tipos" value="Agressão verbal ou humilhação"> Agressão verbal ou humilhação</label>
+              <label class="check"><input type="checkbox" name="tipos" value="Procedimento sem consentimento"> Procedimento sem consentimento</label>
+              <label class="check"><input type="checkbox" name="tipos" value="Falta de informação"> Falta de informação</label>
+              <label class="check"><input type="checkbox" name="tipos" value="Negativa de acompanhante"> Negativa de acompanhante</label>
+              <label class="check"><input type="checkbox" name="tipos" value="Negativa de atendimento ou alívio da dor"> Negativa de atendimento ou alívio da dor</label>
+              <label class="check"><input type="checkbox" name="tipos" value="Outro"> Outro</label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="field">
+              <label for="tipo-servico">Tipo de serviço</label>
+              <select id="tipo-servico" name="servico" class="control control-pill">
+                <option value="">Selecione</option>
+                <option>Público (SUS)</option>
+                <option>Privado</option>
+                <option>Convênio / plano de saúde</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="momento">Momento do atendimento</label>
+              <select id="momento" name="momento" class="control control-pill">
+                <option value="">Selecione</option>
+                <option>Pré-natal</option>
+                <option>Parto</option>
+                <option>Pós-parto</option>
+                <option>Aborto / perda gestacional</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Etapa 3 – Evidências -->
+      <fieldset class="panel" data-panel="3">
+        <legend class="sr-only">Etapa 3: Evidências</legend>
+
+        <div class="field field-narrow">
+          <label for="arquivos">Anexe documentos, fotos ou prints (opcional)</label>
+          <input id="arquivos" name="arquivos" type="file" class="control control-pill control-file" multiple accept="image/*,.pdf">
+          <p class="hint">Se possível, retire dados que identifiquem você antes de enviar.</p>
+          <ul id="lista-arquivos" class="file-list" aria-live="polite"></ul>
+        </div>
+      </fieldset>
+
+      <!-- Etapa 4 – Revisão -->
+      <fieldset class="panel" data-panel="4">
+        <legend class="sr-only">Etapa 4: Revisão</legend>
+
+        <dl class="review" id="revisao" aria-live="polite"></dl>
+      </fieldset>
+
+      <!-- Navegação do formulário -->
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="btn-voltar" hidden>
+          <svg viewBox="0 0 32 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M30 10H3M10 2 2 10l8 8"/></svg>
+          Voltar
+        </button>
+
+        <button type="button" class="btn btn-primary" id="btn-continuar">
+          <span>Continuar</span>
+          <svg viewBox="0 0 32 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h27M22 2l8 8-8 8"/></svg>
+        </button>
+      </div>
+
+      <p class="confirmacao" id="confirmacao" role="status" hidden>
+        Denúncia enviada. Obrigada por contribuir para mudar essa realidade.
+      </p>
+    </form>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <span class="sr-only">Ampara – informação e apoio contra a violência obstétrica</span>
+  </footer>
+
+  <script src="denuncia.js"></script>
+</body>
+</html>
